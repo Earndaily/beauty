@@ -12,141 +12,305 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            color: #1a1a1a;
+            background: #fafafa;
         }
 
         header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
             color: white;
-            padding: 2rem 0;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 20px rgba(99, 102, 241, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
         h1 {
-            text-align: center;
-            font-size: 2.5rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .search-container {
+            position: relative;
+            flex: 1;
+            max-width: 400px;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            background: rgba(255,255,255,0.95);
+            transition: all 0.3s ease;
+        }
+
+        .search-box:focus {
+            outline: none;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        .carousel-section {
+            background: white;
+            padding: 2.5rem 0;
+            margin-bottom: 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .carousel-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+        }
+
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carousel {
+            display: flex;
+            gap: 1.5rem;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding-bottom: 1rem;
+        }
+
+        .carousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .carousel-card {
+            min-width: 280px;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .carousel-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        .carousel-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .carousel-info {
+            padding: 1rem;
+        }
+
+        .new-badge {
+            display: inline-block;
+            background: #10b981;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
             margin-bottom: 0.5rem;
         }
 
-        .tagline {
-            text-align: center;
-            font-size: 1.1rem;
-            opacity: 0.95;
+        .categories {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            padding: 2rem 0 1.5rem;
+        }
+
+        .category-btn {
+            padding: 0.75rem 1.5rem;
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #4b5563;
+        }
+
+        .category-btn:hover {
+            border-color: #6366f1;
+            color: #6366f1;
+            transform: translateY(-2px);
+        }
+
+        .category-btn.active {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+            border-color: transparent;
         }
 
         .products {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            padding: 3rem 0;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.5rem;
+            padding: 2rem 0 3rem;
         }
 
         .product-card {
             background: white;
-            border-radius: 15px;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
         }
 
         .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.12);
         }
 
         .product-image {
             width: 100%;
-            height: 250px;
+            height: 200px;
             object-fit: cover;
-            background: #f5f5f5;
-        }
-        
-        .product-image-placeholder {
-            width: 100%;
-            height: 250px;
-            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
         }
 
         .product-info {
-            padding: 1.5rem;
+            padding: 1.25rem;
+        }
+
+        .product-category {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #8b5cf6;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
         }
 
         .product-name {
-            font-size: 1.4rem;
+            font-size: 1.15rem;
             font-weight: 600;
             margin-bottom: 0.5rem;
-            color: #667eea;
+            color: #1a1a1a;
         }
 
         .product-description {
-            color: #666;
+            color: #6b7280;
             margin-bottom: 1rem;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
         }
 
         .product-price {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #764ba2;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #6366f1;
             margin-bottom: 1rem;
         }
 
         .buy-btn {
             width: 100%;
-            padding: 1rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 0.875rem;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
             color: white;
             border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
+            border-radius: 12px;
+            font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: all 0.3s ease;
         }
 
         .buy-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
         }
 
         .buy-btn:active {
             transform: scale(0.98);
         }
 
+        .no-results {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: #6b7280;
+        }
+
+        .no-results-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
         footer {
-            background: #333;
+            background: #1f2937;
             color: white;
             text-align: center;
-            padding: 2rem 0;
+            padding: 2.5rem 0;
             margin-top: 3rem;
         }
 
-        .whatsapp-icon {
-            display: inline-block;
-            margin-right: 5px;
+        footer a {
+            color: #60a5fa;
+            text-decoration: none;
         }
 
         @media (max-width: 768px) {
             h1 {
-                font-size: 2rem;
+                font-size: 1.5rem;
             }
-            
+
+            .search-container {
+                max-width: 100%;
+                order: 3;
+                width: 100%;
+            }
+
+            .categories {
+                overflow-x: auto;
+                flex-wrap: nowrap;
+                padding-bottom: 0.5rem;
+            }
+
             .products {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                gap: 1rem;
+            }
+
+            .carousel-card {
+                min-width: 240px;
             }
         }
     </style>
@@ -154,80 +318,213 @@
 <body>
     <header>
         <div class="container">
-            <h1>✨ Glow Naturals</h1>
-            <p class="tagline">Premium Skincare for Your Natural Beauty</p>
+            <div class="header-content">
+                <h1>✨ Glow Naturals</h1>
+                <div class="search-container">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-box" id="searchInput" placeholder="Search products...">
+                </div>
+            </div>
         </div>
     </header>
 
+    <section class="carousel-section">
+        <div class="container">
+            <h2 class="carousel-title">🔥 New Arrivals</h2>
+            <div class="carousel-container">
+                <div class="carousel" id="carousel"></div>
+            </div>
+        </div>
+    </section>
+
     <main class="container">
+        <div class="categories" id="categories"></div>
         <div class="products" id="products"></div>
+        <div class="no-results" id="noResults" style="display: none;">
+            <div class="no-results-icon">🔍</div>
+            <h3>No products found</h3>
+            <p>Try searching for something else or browse our categories</p>
+        </div>
     </main>
 
     <footer>
         <div class="container">
             <p>&copy; 2026 Glow Naturals. All rights reserved.</p>
-            <p style="margin-top: 0.5rem;">Contact us on WhatsApp: 0702377999</p>
+            <p style="margin-top: 0.5rem;">Contact us on WhatsApp: <a href="https://wa.me/256702377999">0702377999</a></p>
         </div>
     </footer>
 
     <script>
         const products = [
             {
-                name: "Vitamin C Serum",
-                description: "Brightening serum with 20% Vitamin C to reduce dark spots and give you radiant, glowing skin.",
+                name: "Vitamin C Brightening Serum",
+                description: "Powerful brightening serum with 20% Vitamin C to fade dark spots and even skin tone.",
                 price: "UGX 45,000",
-                image: "images/vitamin-c-serum.jpg"
+                category: "Serums",
+                image: "images/vitamin-c-serum.jpg",
+                isNew: true
             },
             {
-                name: "Hyaluronic Acid Moisturizer",
-                description: "Deep hydration moisturizer that locks in moisture for plump, dewy skin all day long.",
-                price: "UGX 38,000",
-                image: "images/moisturizer.jpg"
+                name: "Hyaluronic Acid Serum",
+                description: "Deep hydration serum that plumps skin and reduces fine lines instantly.",
+                price: "UGX 42,000",
+                category: "Serums",
+                image: "images/hyaluronic-serum.jpg",
+                isNew: true
             },
             {
-                name: "Retinol Night Cream",
-                description: "Anti-aging night cream with retinol to smooth fine lines and rejuvenate skin overnight.",
-                price: "UGX 52,000",
-                image: "images/night-cream.jpg"
+                name: "Niacinamide Brightening Serum",
+                description: "Reduce pores and brighten complexion with this powerful niacinamide formula.",
+                price: "UGX 40,000",
+                category: "Brightening",
+                image: "images/niacinamide-serum.jpg",
+                isNew: true
             },
             {
-                name: "Gentle Cleanser",
-                description: "Mild foaming cleanser that removes impurities without stripping natural oils. Perfect for daily use.",
-                price: "UGX 28,000",
-                image: "images/cleanser.jpg"
+                name: "Natural Turmeric Soap",
+                description: "Handmade soap with turmeric and honey for natural skin brightening.",
+                price: "UGX 15,000",
+                category: "Natural",
+                image: "images/turmeric-soap.jpg",
+                isNew: false
             },
             {
-                name: "Sunscreen SPF 50",
-                description: "Broad-spectrum protection against UVA/UVB rays. Lightweight, non-greasy formula.",
+                name: "Charcoal Detox Soap",
+                description: "Deep cleansing charcoal soap that removes impurities and toxins.",
+                price: "UGX 18,000",
+                category: "Soaps",
+                image: "images/charcoal-soap.jpg",
+                isNew: false
+            },
+            {
+                name: "African Black Soap",
+                description: "Authentic African black soap for acne-prone and sensitive skin.",
+                price: "UGX 20,000",
+                category: "Soaps",
+                image: "images/black-soap.jpg",
+                isNew: false
+            },
+            {
+                name: "Kojic Acid Lightening Cream",
+                description: "Effective lightening cream that reduces hyperpigmentation and dark spots.",
+                price: "UGX 55,000",
+                category: "Lightening",
+                image: "images/kojic-cream.jpg",
+                isNew: true
+            },
+            {
+                name: "Glutathione Whitening Lotion",
+                description: "Premium whitening lotion with glutathione for all-over body brightening.",
+                price: "UGX 65,000",
+                category: "Lightening",
+                image: "images/glutathione-lotion.jpg",
+                isNew: false
+            },
+            {
+                name: "Alpha Arbutin Brightening Cream",
+                description: "Gentle brightening cream suitable for sensitive skin, fades dark spots safely.",
+                price: "UGX 48,000",
+                category: "Brightening",
+                image: "images/arbutin-cream.jpg",
+                isNew: false
+            },
+            {
+                name: "Aloe Vera & Honey Face Wash",
+                description: "100% natural face wash with pure aloe vera and organic honey.",
+                price: "UGX 22,000",
+                category: "Natural",
+                image: "images/aloe-wash.jpg",
+                isNew: false
+            },
+            {
+                name: "Shea Butter Body Cream",
+                description: "Rich natural body cream with raw shea butter for deep moisturization.",
                 price: "UGX 35,000",
-                image: "images/sunscreen.jpg"
+                category: "Natural",
+                image: "images/shea-cream.jpg",
+                isNew: false
             },
             {
-                name: "Clay Face Mask",
-                description: "Detoxifying clay mask that draws out impurities and minimizes pores for clearer skin.",
-                price: "UGX 30,000",
-                image: "images/face-mask.jpg"
+                name: "Rose Water Toner",
+                description: "Natural rose water toner that refreshes and balances skin pH.",
+                price: "UGX 25,000",
+                category: "Natural",
+                image: "images/rose-toner.jpg",
+                isNew: true
             }
         ];
 
-        const phoneNumber = "256702377999"; // Ugandan format
+        const phoneNumber = "256702377999";
+        let currentCategory = "All";
+        let searchTerm = "";
+
+        const categories = ["All", "Serums", "Soaps", "Lightening", "Brightening", "Natural"];
+
+        function createCategoryButtons() {
+            const container = document.getElementById('categories');
+            categories.forEach(cat => {
+                const btn = document.createElement('button');
+                btn.className = 'category-btn' + (cat === 'All' ? ' active' : '');
+                btn.textContent = cat;
+                btn.onclick = () => filterByCategory(cat);
+                container.appendChild(btn);
+            });
+        }
+
+        function filterByCategory(category) {
+            currentCategory = category;
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.textContent === category);
+            });
+            displayProducts();
+        }
+
+        function createCarousel() {
+            const carousel = document.getElementById('carousel');
+            const newProducts = products.filter(p => p.isNew);
+            
+            newProducts.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'carousel-card';
+                card.onclick = () => buyProduct(product);
+                
+                card.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}" class="carousel-image">
+                    <div class="carousel-info">
+                        <span class="new-badge">NEW</span>
+                        <h3 style="font-size: 1rem; font-weight: 600; margin-bottom: 0.25rem;">${product.name}</h3>
+                        <div style="font-size: 1.25rem; font-weight: 700; color: #6366f1;">${product.price}</div>
+                    </div>
+                `;
+                
+                carousel.appendChild(card);
+            });
+
+            let scrollAmount = 0;
+            setInterval(() => {
+                const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+                if (scrollAmount >= maxScroll) {
+                    scrollAmount = 0;
+                } else {
+                    scrollAmount += 300;
+                }
+                carousel.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+            }, 3000);
+        }
 
         function createProductCard(product) {
             const card = document.createElement('div');
             card.className = 'product-card';
             
-            const message = `Hi! I'm interested in ordering the ${product.name} (${product.price})`;
-            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-            
             card.innerHTML = `
-                <img src="${product.image}" alt="${product.name}" class="product-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                <div class="product-image-placeholder" style="display:none;">📷</div>
+                <img src="${product.image}" alt="${product.name}" class="product-image">
                 <div class="product-info">
+                    <div class="product-category">${product.category}</div>
                     <h2 class="product-name">${product.name}</h2>
                     <p class="product-description">${product.description}</p>
                     <div class="product-price">${product.price}</div>
-                    <button class="buy-btn" onclick="window.open('${whatsappUrl}', '_blank')">
-                        <span class="whatsapp-icon">💬</span> Buy on WhatsApp
+                    <button class="buy-btn" data-product="${encodeURIComponent(JSON.stringify(product))}">
+                        💬 Order on WhatsApp
                     </button>
                 </div>
             `;
@@ -235,10 +532,52 @@
             return card;
         }
 
-        const productsContainer = document.getElementById('products');
-        products.forEach(product => {
-            productsContainer.appendChild(createProductCard(product));
+        function buyProduct(product) {
+            const message = `Hi! I'm interested in ordering:\n\n*${product.name}*\nPrice: ${product.price}\nCategory: ${product.category}`;
+            const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        }
+
+        function displayProducts() {
+            const container = document.getElementById('products');
+            const noResults = document.getElementById('noResults');
+            container.innerHTML = '';
+
+            let filtered = products.filter(p => {
+                const matchesCategory = currentCategory === 'All' || p.category === currentCategory;
+                const matchesSearch = p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                                     p.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                                     p.category.toLowerCase().includes(searchTerm.toLowerCase());
+                return matchesCategory && matchesSearch;
+            });
+
+            if (filtered.length === 0) {
+                noResults.style.display = 'block';
+                container.style.display = 'none';
+            } else {
+                noResults.style.display = 'none';
+                container.style.display = 'grid';
+                filtered.forEach(product => {
+                    container.appendChild(createProductCard(product));
+                });
+            }
+        }
+
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            searchTerm = e.target.value;
+            displayProducts();
         });
+
+        document.getElementById('products').addEventListener('click', (e) => {
+            if (e.target.classList.contains('buy-btn')) {
+                const productData = JSON.parse(decodeURIComponent(e.target.dataset.product));
+                buyProduct(productData);
+            }
+        });
+
+        createCategoryButtons();
+        createCarousel();
+        displayProducts();
     </script>
 </body>
 </html>
