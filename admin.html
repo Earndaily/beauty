@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Glow Naturals</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f5f5f5;
+        }
+
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .login-box {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .login-box h1 {
+            margin-bottom: 2rem;
+            color: #6366f1;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.875rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #6366f1;
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        button {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .admin-panel {
+            display: none;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .admin-header {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logout-btn {
+            width: auto;
+            padding: 0.5rem 1.5rem;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .admin-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+        }
+
+        .panel-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .panel-card h2 {
+            margin-bottom: 1.5rem;
+            color: #6366f1;
+        }
+
+        .products-list {
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .product-item {
+            padding: 1rem;
+            background: #f9fafb;
+            border-radius: 10px;
+            margin-bottom: 0.75rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-item:hover {
+            background: #f3f4f6;
+        }
+
+        .product-info {
+            flex: 1;
+        }
+
+        .product-name {
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 0.25rem;
+        }
+
+        .product-meta {
+            font-size: 0.85rem;
+            color: #6b7280;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-small {
+            padding: 0.5rem 1rem;
+            width: auto;
+            font-size: 0.85rem;
+        }
+
+        .btn-edit {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+
+        .btn-delete {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+        }
+
+        .success-message {
+            background: #10b981;
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .category-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: #6366f1;
+            color: white;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            margin-left: 0.5rem;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .checkbox-group input {
+            width: auto;
+        }
+
+        @media (max-width: 768px) {
+            .admin-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .admin-header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Screen -->
+    <div class="login-container" id="loginScreen">
+        <div class="login-box">
+            <h1>🔐 Admin Login</h1>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="loginPassword" placeholder="Enter admin password">
+            </div>
+            <button onclick="login()">Login</button>
+            <p style="margin-top: 1rem; text-align: center; color: #6b7280; font-size: 0.85rem;">
+                Default password: admin123
+            </p>
+        </div>
+    </div>
+
+    <!-- Admin Panel -->
+    <div class="admin-panel" id="adminPanel">
+        <div class="admin-header">
+            <div>
+                <h1>✨ Glow Naturals Admin</h1>
+                <p>Manage your products easily</p>
+            </div>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+
+        <div class="admin-grid">
+            <!-- Add/Edit Product Form -->
+            <div class="panel-card">
+                <h2 id="formTitle">➕ Add New Product</h2>
+                <div class="success-message" id="successMessage">Product saved successfully!</div>
+                
+                <form id="productForm">
+                    <div class="form-group">
+                        <label>Product Name</label>
+                        <input type="text" id="productName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea id="productDescription" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Price</label>
+                        <input type="text" id="productPrice" placeholder="UGX 45,000" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select id="productCategory" required>
+                            <option value="Serums">Serums</option>
+                            <option value="Soaps">Soaps</option>
+                            <option value="Lightening">Lightening</option>
+                            <option value="Brightening">Brightening</option>
+                            <option value="Natural">Natural</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Image Filename</label>
+                        <input type="text" id="productImage" placeholder="vitamin-c-serum.jpg" required>
+                        <small style="color: #6b7280; display: block; margin-top: 0.25rem;">
+                            Upload image to 'images/' folder first, then enter filename here
+                        </small>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="productIsNew">
+                            <label style="margin: 0;">Show in "New Arrivals" carousel</label>
+                        </div>
+                    </div>
+
+                    <button type="submit">💾 Save Product</button>
+                    <button type="button" onclick="cancelEdit()" style="background: #6b7280; margin-top: 0.5rem; display: none;" id="cancelBtn">Cancel</button>
+                </form>
+            </div>
+
+            <!-- Products List -->
+            <div class="panel-card">
+                <h2>📦 All Products (<span id="productCount">0</span>)</h2>
+                <div class="products-list" id="productsList"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const ADMIN_PASSWORD = "admin123"; // Change this to your secure password
+        let products = [];
+        let editingIndex = -1;
+
+        // Login
+        function login() {
+            const password = document.getElementById('loginPassword').value;
+            if (password === ADMIN_PASSWORD) {
+                document.getElementById('loginScreen').style.display = 'none';
+                document.getElementById('adminPanel').style.display = 'block';
+                loadProducts();
+            } else {
+                alert('❌ Incorrect password!');
+            }
+        }
+
+        // Logout
+        function logout() {
+            document.getElementById('loginScreen').style.display = 'flex';
+            document.getElementById('adminPanel').style.display = 'none';
+            document.getElementById('loginPassword').value = '';
+        }
+
+        // Load products from storage
+        async function loadProducts() {
+            try {
+                const result = await window.storage.get('store-products');
+                if (result && result.value) {
+                    products = JSON.parse(result.value);
+                } else {
+                    // Initialize with default products if none exist
+                    products = [
+                        {
+                            name: "Vitamin C Brightening Serum",
+                            description: "Powerful brightening serum with 20% Vitamin C to fade dark spots.",
+                            price: "UGX 45,000",
+                            category: "Serums",
+                            image: "images/vitamin-c-serum.jpg",
+                            isNew: true
+                        }
+                    ];
+                    await saveProducts();
+                }
+                displayProducts();
+            } catch (error) {
+                console.log('No existing products, starting fresh');
+                products = [];
+                displayProducts();
+            }
+        }
+
+        // Save products to storage
+        async function saveProducts() {
+            try {
+                await window.storage.set('store-products', JSON.stringify(products));
+                return true;
+            } catch (error) {
+                alert('Error saving products: ' + error.message);
+                return false;
+            }
+        }
+
+        // Display products list
+        function displayProducts() {
+            const list = document.getElementById('productsList');
+            document.getElementById('productCount').textContent = products.length;
+
+            if (products.length === 0) {
+                list.innerHTML = '<p style="text-align: center; color: #6b7280; padding: 2rem;">No products yet. Add your first product!</p>';
+                return;
+            }
+
+            list.innerHTML = products.map((product, index) => `
+                <div class="product-item">
+                    <div class="product-info">
+                        <div class="product-name">
+                            ${product.name}
+                            <span class="category-badge">${product.category}</span>
+                            ${product.isNew ? '<span class="category-badge" style="background: #10b981;">NEW</span>' : ''}
+                        </div>
+                        <div class="product-meta">${product.price}</div>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn-small btn-edit" onclick="editProduct(${index})">✏️ Edit</button>
+                        <button class="btn-small btn-delete" onclick="deleteProduct(${index})">🗑️ Delete</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Handle form submission
+        document.getElementById('productForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const product = {
+                name: document.getElementById('productName').value,
+                description: document.getElementById('productDescription').value,
+                price: document.getElementById('productPrice').value,
+                category: document.getElementById('productCategory').value,
+                image: 'images/' + document.getElementById('productImage').value.replace('images/', ''),
+                isNew: document.getElementById('productIsNew').checked
+            };
+
+            if (editingIndex >= 0) {
+                products[editingIndex] = product;
+                editingIndex = -1;
+            } else {
+                products.push(product);
+            }
+
+            const saved = await saveProducts();
+            if (saved) {
+                displayProducts();
+                document.getElementById('productForm').reset();
+                document.getElementById('formTitle').textContent = '➕ Add New Product';
+                document.getElementById('cancelBtn').style.display = 'none';
+                
+                // Show success message
+                const successMsg = document.getElementById('successMessage');
+                successMsg.style.display = 'block';
+                setTimeout(() => {
+                    successMsg.style.display = 'none';
+                }, 3000);
+            }
+        });
+
+        // Edit product
+        function editProduct(index) {
+            editingIndex = index;
+            const product = products[index];
+
+            document.getElementById('productName').value = product.name;
+            document.getElementById('productDescription').value = product.description;
+            document.getElementById('productPrice').value = product.price;
+            document.getElementById('productCategory').value = product.category;
+            document.getElementById('productImage').value = product.image.replace('images/', '');
+            document.getElementById('productIsNew').checked = product.isNew;
+
+            document.getElementById('formTitle').textContent = '✏️ Edit Product';
+            document.getElementById('cancelBtn').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Cancel edit
+        function cancelEdit() {
+            editingIndex = -1;
+            document.getElementById('productForm').reset();
+            document.getElementById('formTitle').textContent = '➕ Add New Product';
+            document.getElementById('cancelBtn').style.display = 'none';
+        }
+
+        // Delete product
+        async function deleteProduct(index) {
+            if (confirm('Are you sure you want to delete this product?')) {
+                products.splice(index, 1);
+                await saveProducts();
+                displayProducts();
+            }
+        }
+
+        // Check for Enter key on password field
+        document.getElementById('loginPassword').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                login();
+            }
+        });
+    </script>
+</body>
+</html>
