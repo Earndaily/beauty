@@ -319,7 +319,7 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <h1>✨ Best skincare for you</h1>
+                <h1>✨ Glow Naturals</h1>
                 <div class="search-container">
                     <span class="search-icon">🔍</span>
                     <input type="text" class="search-box" id="searchInput" placeholder="Search products...">
@@ -349,112 +349,64 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 Best skincare. All rights reserved.</p>
+            <p>&copy; 2026 Glow Naturals. All rights reserved.</p>
             <p style="margin-top: 0.5rem;">Contact us on WhatsApp: <a href="https://wa.me/256702377999">0702377999</a></p>
         </div>
     </footer>
 
     <script>
-        const products = [
-            {
-                name: "Collagen cleanser",
-                description: "Powerful cleanser for the face to aid in antiaging and clearing wrinkles and finelines.",
-                price: "UGX 35,000",
-                category: "Soaps",
-                image: "images/IMG_3984.jpeg",
-                isNew: true
-            },
-            {
-                name: "Hyaluronic Acid Serum",
-                description: "Deep hydration serum that plumps skin and reduces fine lines instantly.",
-                price: "UGX 42,000",
-                category: "Serums",
-                image: "images/hyaluronic-serum.jpg",
-                isNew: true
-            },
-            {
-                name: "Niacinamide Brightening Serum",
-                description: "Reduce pores and brighten complexion with this powerful niacinamide formula.",
-                price: "UGX 40,000",
-                category: "Brightening",
-                image: "images/niacinamide-serum.jpg",
-                isNew: true
-            },
-            {
-                name: "Natural Turmeric Soap",
-                description: "Handmade soap with turmeric and honey for natural skin brightening.",
-                price: "UGX 15,000",
-                category: "Natural",
-                image: "images/turmeric-soap.jpg",
-                isNew: false
-            },
-            {
-                name: "Charcoal Detox Soap",
-                description: "Deep cleansing charcoal soap that removes impurities and toxins.",
-                price: "UGX 18,000",
-                category: "Soaps",
-                image: "images/charcoal-soap.jpg",
-                isNew: false
-            },
-            {
-                name: "African Black Soap",
-                description: "Authentic African black soap for acne-prone and sensitive skin.",
-                price: "UGX 20,000",
-                category: "Soaps",
-                image: "images/black-soap.jpg",
-                isNew: false
-            },
-            {
-                name: "Kojic Acid Lightening Cream",
-                description: "Effective lightening cream that reduces hyperpigmentation and dark spots.",
-                price: "UGX 55,000",
-                category: "Lightening",
-                image: "images/kojic-cream.jpg",
-                isNew: true
-            },
-            {
-                name: "Glutathione Whitening Lotion",
-                description: "Premium whitening lotion with glutathione for all-over body brightening.",
-                price: "UGX 65,000",
-                category: "Lightening",
-                image: "images/glutathione-lotion.jpg",
-                isNew: false
-            },
-            {
-                name: "Alpha Arbutin Brightening Cream",
-                description: "Gentle brightening cream suitable for sensitive skin, fades dark spots safely.",
-                price: "UGX 48,000",
-                category: "Brightening",
-                image: "images/arbutin-cream.jpg",
-                isNew: false
-            },
-            {
-                name: "Aloe Vera & Honey Face Wash",
-                description: "100% natural face wash with pure aloe vera and organic honey.",
-                price: "UGX 22,000",
-                category: "Natural",
-                image: "images/aloe-wash.jpg",
-                isNew: false
-            },
-            {
-                name: "Shea Butter Body Cream",
-                description: "Rich natural body cream with raw shea butter for deep moisturization.",
-                price: "UGX 35,000",
-                category: "Natural",
-                image: "images/shea-cream.jpg",
-                isNew: false
-            },
-            {
-                name: "Rose Water Toner",
-                description: "Natural rose water toner that refreshes and balances skin pH.",
-                price: "UGX 25,000",
-                category: "Natural",
-                image: "images/rose-toner.jpg",
-                isNew: true
-            }
-        ];
-
+        let products = [];
         const phoneNumber = "256702377999";
+
+        // Load products from storage
+        async function loadProducts() {
+            try {
+                const result = await window.storage.get('store-products');
+                if (result && result.value) {
+                    products = JSON.parse(result.value);
+                } else {
+                    // Default products if none exist
+                    products = [
+                        {
+                            name: "Vitamin C Brightening Serum",
+                            description: "Powerful brightening serum with 20% Vitamin C to fade dark spots.",
+                            price: "UGX 45,000",
+                            category: "Serums",
+                            image: "images/vitamin-c-serum.jpg",
+                            isNew: true
+                        },
+                        {
+                            name: "Natural Turmeric Soap",
+                            description: "Handmade soap with turmeric and honey for natural brightening.",
+                            price: "UGX 15,000",
+                            category: "Natural",
+                            image: "images/turmeric-soap.jpg",
+                            isNew: false
+                        }
+                    ];
+                }
+                initializeStore();
+            } catch (error) {
+                console.log('Loading default products');
+                products = [
+                    {
+                        name: "Vitamin C Brightening Serum",
+                        description: "Powerful brightening serum with 20% Vitamin C to fade dark spots.",
+                        price: "UGX 45,000",
+                        category: "Serums",
+                        image: "images/vitamin-c-serum.jpg",
+                        isNew: true
+                    }
+                ];
+                initializeStore();
+            }
+        }
+
+        function initializeStore() {
+            createCategoryButtons();
+            createCarousel();
+            displayProducts();
+        }
         let currentCategory = "All";
         let searchTerm = "";
 
@@ -575,9 +527,8 @@
             }
         });
 
-        createCategoryButtons();
-        createCarousel();
-        displayProducts();
+        // Load products when page loads
+        loadProducts();
     </script>
 </body>
 </html>
