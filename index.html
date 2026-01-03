@@ -355,58 +355,58 @@
     </footer>
 
     <script>
-        let products = [];
-        const phoneNumber = "256702377999";
-
-        // Load products from storage
-        async function loadProducts() {
-            try {
-                const result = await window.storage.get('store-products');
-                if (result && result.value) {
-                    products = JSON.parse(result.value);
-                } else {
-                    // Default products if none exist
-                    products = [
-                        {
-                            name: "Vitamin C Brightening Serum",
-                            description: "Powerful brightening serum with 20% Vitamin C to fade dark spots.",
-                            price: "UGX 45,000",
-                            category: "Serums",
-                            image: "images/vitamin-c-serum.jpg",
-                            isNew: true
-                        },
-                        {
-                            name: "Natural Turmeric Soap",
-                            description: "Handmade soap with turmeric and honey for natural brightening.",
-                            price: "UGX 15,000",
-                            category: "Natural",
-                            image: "images/turmeric-soap.jpg",
-                            isNew: false
-                        }
-                    ];
-                }
-                initializeStore();
-            } catch (error) {
-                console.log('Loading default products');
-                products = [
-                    {
-                        name: "Vitamin C Brightening Serum",
-                        description: "Powerful brightening serum with 20% Vitamin C to fade dark spots.",
-                        price: "UGX 45,000",
-                        category: "Serums",
-                        image: "images/vitamin-c-serum.jpg",
-                        isNew: true
-                    }
-                ];
-                initializeStore();
+        const products = [
+            {
+                name: "Vitamin C Brightening Serum",
+                description: "Powerful brightening serum with 20% Vitamin C to fade dark spots and even skin tone.",
+                price: "UGX 45,000",
+                category: "Serums",
+                image: "images/vitamin-c-serum.jpg",
+                isNew: true
+            },
+            {
+                name: "Hyaluronic Acid Serum",
+                description: "Deep hydration serum that plumps skin and reduces fine lines instantly.",
+                price: "UGX 42,000",
+                category: "Serums",
+                image: "images/hyaluronic-serum.jpg",
+                isNew: true
+            },
+            {
+                name: "Niacinamide Brightening Serum",
+                description: "Reduce pores and brighten complexion with this powerful niacinamide formula.",
+                price: "UGX 40,000",
+                category: "Brightening",
+                image: "images/niacinamide-serum.jpg",
+                isNew: true
+            },
+            {
+                name: "Natural Turmeric Soap",
+                description: "Handmade soap with turmeric and honey for natural skin brightening.",
+                price: "UGX 15,000",
+                category: "Natural",
+                image: "images/turmeric-soap.jpg",
+                isNew: false
+            },
+            {
+                name: "Charcoal Detox Soap",
+                description: "Deep cleansing charcoal soap that removes impurities and toxins.",
+                price: "UGX 18,000",
+                category: "Soaps",
+                image: "images/charcoal-soap.jpg",
+                isNew: false
+            },
+            {
+                name: "African Black Soap",
+                description: "Authentic African black soap for acne-prone and sensitive skin.",
+                price: "UGX 20,000",
+                category: "Soaps",
+                image: "images/black-soap.jpg",
+                isNew: false
             }
-        }
+        ];
 
-        function initializeStore() {
-            createCategoryButtons();
-            createCarousel();
-            displayProducts();
-        }
+        const phoneNumber = "256702377999";
         let currentCategory = "All";
         let searchTerm = "";
 
@@ -527,8 +527,9 @@
             }
         });
 
-        // Load products when page loads
-        loadProducts();
+        createCategoryButtons();
+        createCarousel();
+        displayProducts();
     </script>
 </body>
 </html>
