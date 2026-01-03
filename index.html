@@ -66,6 +66,13 @@
         .product-image {
             width: 100%;
             height: 250px;
+            object-fit: cover;
+            background: #f5f5f5;
+        }
+        
+        .product-image-placeholder {
+            width: 100%;
+            height: 250px;
             background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
             display: flex;
             align-items: center;
@@ -169,37 +176,37 @@
                 name: "Vitamin C Serum",
                 description: "Brightening serum with 20% Vitamin C to reduce dark spots and give you radiant, glowing skin.",
                 price: "UGX 45,000",
-                emoji: "🍊"
+                image: "images/vitamin-c-serum.jpg"
             },
             {
                 name: "Hyaluronic Acid Moisturizer",
                 description: "Deep hydration moisturizer that locks in moisture for plump, dewy skin all day long.",
                 price: "UGX 38,000",
-                emoji: "💧"
+                image: "images/moisturizer.jpg"
             },
             {
                 name: "Retinol Night Cream",
                 description: "Anti-aging night cream with retinol to smooth fine lines and rejuvenate skin overnight.",
                 price: "UGX 52,000",
-                emoji: "🌙"
+                image: "images/night-cream.jpg"
             },
             {
                 name: "Gentle Cleanser",
                 description: "Mild foaming cleanser that removes impurities without stripping natural oils. Perfect for daily use.",
                 price: "UGX 28,000",
-                emoji: "🧼"
+                image: "images/cleanser.jpg"
             },
             {
                 name: "Sunscreen SPF 50",
                 description: "Broad-spectrum protection against UVA/UVB rays. Lightweight, non-greasy formula.",
                 price: "UGX 35,000",
-                emoji: "☀️"
+                image: "images/sunscreen.jpg"
             },
             {
                 name: "Clay Face Mask",
                 description: "Detoxifying clay mask that draws out impurities and minimizes pores for clearer skin.",
                 price: "UGX 30,000",
-                emoji: "🎭"
+                image: "images/face-mask.jpg"
             }
         ];
 
@@ -213,7 +220,8 @@
             const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
             
             card.innerHTML = `
-                <div class="product-image">${product.emoji}</div>
+                <img src="${product.image}" alt="${product.name}" class="product-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="product-image-placeholder" style="display:none;">📷</div>
                 <div class="product-info">
                     <h2 class="product-name">${product.name}</h2>
                     <p class="product-description">${product.description}</p>
