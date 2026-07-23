@@ -354,405 +354,157 @@
         </div>
     </footer>
 
-    <script>
-const products = [
-    {
-        "name": "collagen firming cleanser",
-        "description": "Replenishes collagen, deep cleanses and best at anti aging",
-        "price": "35000",
-        "category": "Soaps",
-        "image": "images/IMG_3984.jpeg",
-        "isNew": true
-    },
-    {
-        "name": "Oil control Toner",
-        "description": "Removes excess oils, and brightens skin",
-        "price": "40000",
-        "category": "Serums",
-        "image": "images/IMG_3985.jpeg",
-        "isNew": true
-    },
-    {
-        "name": "Golden snail mseru",
-        "description": "best at askin moisturization",
-        "price": "40000",
-        "category": "Serums",
-        "image": "images/IMG_3986.jpeg",
-        "isNew": false
-    },
-    {
-        "name": "Collagen Snail face serum",
-        "description": "Anti acne, Whitening, Brightening, and anti aging",
-        "price": "30000",
-        "category": "Serums",
-        "image": "images/IMG_3987.jpeg",
-        "isNew": true
-    },
-    {
-        "name": "Licorice root whitening facial wash",
-        "description": "Deep cleansing, soothing skin, brightening and whitening",
-        "price": "35000",
-        "category": "Soaps",
-        "image": "images/IMG_3988.jpeg",
-        "isNew": true
-    },
-    {
-        "name": "skin king lightening cream",
-        "description": "For a well balanced, lightened skin free from darksports, acne, and uneven skin tone. Highly hydrates skin",
-        "price": "50000",
-        "category": "Lightening",
-        "image": "images/IMG_3990.jpeg",
-        "isNew": true
-    },
-    {
-        "name": "Nigerian black soap",
-        "description": "Deep cleansing, Exfoliation, skin claryfication and pimple clearance",
-        "price": "50000",
-        "category": "Soaps",
-        "image": "images/IMG_3991.jpeg",
-        "isNew": true
-    },
-    {
-        "name": "ERHA21-cleansing scrub gel",
-        "description": "Good for skin cleansing and skin soothing, removes skin dirt and controls oils",
-        "price": "25000",
-        "category": "Soaps",
-        "image": "images/IMG_3992.jpeg",
-        "isNew": true
-    },
-    {
-        "name": "Skin king brightening cream",
-        "description": "Brightens skin, evens skin tone and balances skin.",
-        "price": "70000",
-        "category": "Brightening",
-        "image": "images/IMG_3993.jpeg",
-        "isNew": true
-    },
-    {
-        "name": "99% vitamin c serum",
-        "description": "Multi function essence, anti aging ,removes freckles and nourishes skin",
-        "price": "35000",
-        "category": "Serums",
-        "image": "images/IMG_3994.jpeg",
-        "isNew": true
-    },
-    {
-        "name": "Simple soothing facial toner",
-        "description": "Gently purifies, soothes skin and 100% alcohol free",
-        "price": "40000",
-        "category": "Serums",
-        "image": "images/IMG_3995.jpeg",
-        "isNew": true
-    },
-    {
-        "name": "Kenta",
-        "description": "Removes knuckles in one week",
-        "price": "45000",
-        "category": "Soaps",
-        "image": "images/IMG_3996.jpeg",
-        "isNew": true
-    },
-    {
-        "name": "Natural pink lip therapy",
-        "description": "For men and women, makes lips pinkish and highly moisturizes them",
-        "price": "30000",
-        "category": "Natural",
-        "image": "images/IMG_3997.jpeg",
-        "isNew": true
-    },
-    {
-        "name": "Eos Evolution shea butter",
-        "description": "24 hour deep moisture, soothes skin, treats dry skin",
-        "price": "140000",
-        "category": "Natural",
-        "image": "images/IMG_3998.jpeg",
-        "isNew": true
-    },
-    {
-        "name": "Sebanoin form cleanser",
-        "description": "Removes and controls excess oils. Good for oily skins",
-        "price": "45000",
-        "category": "Serums",
-        "image": "images/IMG_3999.jpeg",
-        "isNew": true
-    },
-    {
-        "name": "Sadoer Men lotion",
-        "description": "For deep cleansing, oil control, hydrating, moisturizing, and highly refreshng",
-        "price": "35000",
-        "category": "Soaps",
-        "image": "images/IMG_4001.jpeg",
-        "isNew": true
-    },
-    {
-        "name": "GSK vitamin E facial Essence",
-        "description": "for skin nourishment, Anti aging, improves skin condition and highly hydrating",
-        "price": "7000",
-        "category": "Natural",
-        "image": "images/IMG_4002.jpeg",
-        "isNew": true
-    },
-    {
-        "name": "Pei mei Vitamin C serum",
-        "description": "Rich in vitamin c, whitening, moisturizing and anti acne",
-        "price": "35000",
-        "category": "Serums",
-        "image": "images/IMG_4003.jpeg",
-        "isNew": true
-    },
-    {
-        "name": "Skin king vena glowing oil",
-        "description": "Evens skin tone, glows skin, Deeply moisturizes skin, and evens skin tone",
-        "price": "35000",
-        "category": "Serums",
-        "image": "images/IMG_4004.jpeg",
-        "isNew": true
-    },
-    {
-        "name": "Dr Dess collagen skincare set",
-        "description": "clears wrinkles, fine lines and freckles, replenishs collagen and deeply moisturizes skin",
-        "price": "95000",
-        "category": "Soaps",
-        "image": "images/IMG_4005.jpeg",
-        "isNew": true
-    },
-    {
-        "name": "Skin king full body brightening cream",
-        "description": "brightens skin, balances skin and moisturizes",
-        "price": "90000",
-        "category": "Brightening",
-        "image": "images/IMG_4006.jpeg",
-        "isNew": true
-    },
-    {
-        "name": "lightening cream",
-        "description": "lightens skin, evens skin tone, and clears dark sports",
-        "price": "80000",
-        "category": "Lightening",
-        "image": "images/IMG_4014.jpeg",
-        "isNew": true
-    },
-    {
-        "name": "Golden snail serum",
-        "description": "Anti aging, skin repair, moisturization",
-        "price": "40000",
-        "category": "Serums",
-        "image": "images/IMG_4016.jpeg",
-        "isNew": true
-    },
-    {
-        "name": "natural pink lip",
-        "description": "for pink lips",
-        "price": "30000",
-        "category": "Natural",
-        "image": "images/IMG_4017.jpeg",
-        "isNew": true
-    },
-    {
-        "name": "Disaar hair removal",
-        "description": "removes hair from private parts, armpits, and from calf muscles",
-        "price": "25000",
-        "category": "Serums",
-        "image": "images/IMG_4018.jpeg",
-        "isNew": true
-    },
-    {
-        "name": "Dr rashel vitamin c serum",
-        "description": "Brightens, anti aging, evens skin tone, reduces darksports, hydrates and gives skin radiance",
-        "price": "35000",
-        "category": "Serums",
-        "image": "images/IMG_4032.jpeg",
-        "isNew": true
-    },
-    {
-        "name": "Palmer's skin suceess-Anti darksports fade cream",
-        "description": "Fade darksports, evens skin tone, improves radiance and repairs skin barrier",
-        "price": "56000",
-        "category": "Brightening",
-        "image": "images/IMG_4047.jpeg",
-        "isNew": true
-    },
-    {
-        "name": "Collagen anti aging serum",
-        "description": "for clearing wrinkles and fine lines, moisturizes skin highly",
-        "price": "35000",
-        "category": "Serums",
-        "image": "images/IMG_4048.jpeg",
-        "isNew": true
-    },
-    {
-        "name": "Dr rashel super turmeric serum",
-        "description": "reduces dark sports, evens skin tone, and maximizes radiance",
-        "price": "35000",
-        "category": "Serums",
-        "image": "images/IMG_4049.jpeg",
-        "isNew": true
-    },
-    {
-        "name": "Advanced pezo mega",
-        "description": "for both full body and upper body weight loss",
-        "price": "80000",
-        "category": "Natural",
-        "image": "images/IMG_4050.jpeg",
-        "isNew": true
-    },
-    {
-        "name": "Batana pure butter",
-        "description": "promotes hair growth",
-        "price": "65000",
-        "category": "Natural",
-        "image": "images/IMG_4051.jpeg",
-        "isNew": true
-    },
-    {
-        "name": "Nivea soft moisturizing cream",
-        "description": "intensive moisturizing, fast absorption, for all skin types",
-        "price": "45000",
-        "category": "Natural",
-        "image": "images/IMG_4052.jpeg",
-        "isNew": true
-    },
-    {
-        "name": "Dark sports correcting serum",
-        "description": "6+1+1 for clearing darksports",
-        "price": "75000",
-        "category": "Serums",
-        "image": "images/IMG_4053.jpeg",
-        "isNew": true
-    },
-    {
-        "name": "Dop shampoo",
-        "description": "for hair, skin lightening, knuckle clearance",
-        "price": "50000",
-        "category": "Brightening",
-        "image": "images/IMG_4054.jpeg",
-        "isNew": true
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPABASE_URL = "https://xgimwpdzuttyjpkatypv.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhnaW13cGR6dXR0eWpwa2F0eXB2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ3OTg3NjYsImV4cCI6MjEwMDM3NDc2Nn0.8nUtclHGSg-ao0Bb3dKokR7L2AiY9qbh-6e66eS9r9k";
+const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+const phoneNumber = "256702377999";
+let products = [];
+let currentCategory = "All";
+let searchTerm = "";
+
+const categories = ["All", "Serums", "Soaps", "Lightening", "Brightening", "Natural"];
+
+function createCategoryButtons() {
+    const container = document.getElementById('categories');
+    container.innerHTML = '';
+    categories.forEach(cat => {
+        const btn = document.createElement('button');
+        btn.className = 'category-btn' + (cat === 'All' ? ' active' : '');
+        btn.textContent = cat;
+        btn.onclick = () => filterByCategory(cat);
+        container.appendChild(btn);
+    });
+}
+
+function filterByCategory(category) {
+    currentCategory = category;
+    document.querySelectorAll('.category-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.textContent === category);
+    });
+    displayProducts();
+}
+
+function createCarousel() {
+    const carousel = document.getElementById('carousel');
+    carousel.innerHTML = '';
+    const newProducts = products.filter(p => p.is_new);
+
+    newProducts.forEach(product => {
+        const card = document.createElement('div');
+        card.className = 'carousel-card';
+        card.onclick = () => buyProduct(product);
+
+        card.innerHTML = `
+            <img src="${product.image}" alt="${product.name}" class="carousel-image">
+            <div class="carousel-info">
+                <span class="new-badge">NEW</span>
+                <h3 style="font-size: 1rem; font-weight: 600; margin-bottom: 0.25rem;">${product.name}</h3>
+                <div style="font-size: 1.25rem; font-weight: 700; color: #6366f1;">${product.price}</div>
+            </div>
+        `;
+
+        carousel.appendChild(card);
+    });
+
+    let scrollAmount = 0;
+    setInterval(() => {
+        const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+        if (maxScroll <= 0) return;
+        if (scrollAmount >= maxScroll) {
+            scrollAmount = 0;
+        } else {
+            scrollAmount += 300;
+        }
+        carousel.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+    }, 3000);
+}
+
+function createProductCard(product) {
+    const card = document.createElement('div');
+    card.className = 'product-card';
+
+    card.innerHTML = `
+        <img src="${product.image}" alt="${product.name}" class="product-image">
+        <div class="product-info">
+            <div class="product-category">${product.category}</div>
+            <h2 class="product-name">${product.name}</h2>
+            <p class="product-description">${product.description}</p>
+            <div class="product-price">${product.price}</div>
+            <button class="buy-btn" data-product="${encodeURIComponent(JSON.stringify(product))}">
+                💬 Order on WhatsApp
+            </button>
+        </div>
+    `;
+
+    return card;
+}
+
+function buyProduct(product) {
+    const message = `Hi! I'm interested in ordering:\n\n*${product.name}*\nPrice: ${product.price}\nCategory: ${product.category}`;
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank');
+}
+
+function displayProducts() {
+    const container = document.getElementById('products');
+    const noResults = document.getElementById('noResults');
+    container.innerHTML = '';
+
+    let filtered = products.filter(p => {
+        const matchesCategory = currentCategory === 'All' || p.category === currentCategory;
+        const matchesSearch = p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                             p.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                             p.category.toLowerCase().includes(searchTerm.toLowerCase());
+        return matchesCategory && matchesSearch;
+    });
+
+    if (filtered.length === 0) {
+        noResults.style.display = 'block';
+        container.style.display = 'none';
+    } else {
+        noResults.style.display = 'none';
+        container.style.display = 'grid';
+        filtered.forEach(product => {
+            container.appendChild(createProductCard(product));
+        });
     }
-];
-        const phoneNumber = "256702377999";
-        let currentCategory = "All";
-        let searchTerm = "";
+}
 
-        const categories = ["All", "Serums", "Soaps", "Lightening", "Brightening", "Natural"];
+document.getElementById('searchInput').addEventListener('input', (e) => {
+    searchTerm = e.target.value;
+    displayProducts();
+});
 
-        function createCategoryButtons() {
-            const container = document.getElementById('categories');
-            categories.forEach(cat => {
-                const btn = document.createElement('button');
-                btn.className = 'category-btn' + (cat === 'All' ? ' active' : '');
-                btn.textContent = cat;
-                btn.onclick = () => filterByCategory(cat);
-                container.appendChild(btn);
-            });
-        }
+document.getElementById('products').addEventListener('click', (e) => {
+    if (e.target.classList.contains('buy-btn')) {
+        const productData = JSON.parse(decodeURIComponent(e.target.dataset.product));
+        buyProduct(productData);
+    }
+});
 
-        function filterByCategory(category) {
-            currentCategory = category;
-            document.querySelectorAll('.category-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.textContent === category);
-            });
-            displayProducts();
-        }
+async function loadProducts() {
+    const { data, error } = await supabaseClient
+        .from('products')
+        .select('*')
+        .order('created_at', { ascending: true });
 
-        function createCarousel() {
-            const carousel = document.getElementById('carousel');
-            const newProducts = products.filter(p => p.isNew);
-            
-            newProducts.forEach(product => {
-                const card = document.createElement('div');
-                card.className = 'carousel-card';
-                card.onclick = () => buyProduct(product);
-                
-                card.innerHTML = `
-                    <img src="${product.image}" alt="${product.name}" class="carousel-image">
-                    <div class="carousel-info">
-                        <span class="new-badge">NEW</span>
-                        <h3 style="font-size: 1rem; font-weight: 600; margin-bottom: 0.25rem;">${product.name}</h3>
-                        <div style="font-size: 1.25rem; font-weight: 700; color: #6366f1;">${product.price}</div>
-                    </div>
-                `;
-                
-                carousel.appendChild(card);
-            });
+    if (error) {
+        console.error('Error loading products:', error);
+        document.getElementById('products').innerHTML =
+            '<p style="text-align:center; padding:2rem; color:#6b7280;">Could not load products. Please refresh.</p>';
+        return;
+    }
 
-            let scrollAmount = 0;
-            setInterval(() => {
-                const maxScroll = carousel.scrollWidth - carousel.clientWidth;
-                if (scrollAmount >= maxScroll) {
-                    scrollAmount = 0;
-                } else {
-                    scrollAmount += 300;
-                }
-                carousel.scrollTo({ left: scrollAmount, behavior: 'smooth' });
-            }, 3000);
-        }
+    products = data;
+    createCategoryButtons();
+    createCarousel();
+    displayProducts();
+}
 
-        function createProductCard(product) {
-            const card = document.createElement('div');
-            card.className = 'product-card';
-            
-            card.innerHTML = `
-                <img src="${product.image}" alt="${product.name}" class="product-image">
-                <div class="product-info">
-                    <div class="product-category">${product.category}</div>
-                    <h2 class="product-name">${product.name}</h2>
-                    <p class="product-description">${product.description}</p>
-                    <div class="product-price">${product.price}</div>
-                    <button class="buy-btn" data-product="${encodeURIComponent(JSON.stringify(product))}">
-                        💬 Order on WhatsApp
-                    </button>
-                </div>
-            `;
-            
-            return card;
-        }
-
-        function buyProduct(product) {
-            const message = `Hi! I'm interested in ordering:\n\n*${product.name}*\nPrice: ${product.price}\nCategory: ${product.category}`;
-            const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-            window.open(url, '_blank');
-        }
-
-        function displayProducts() {
-            const container = document.getElementById('products');
-            const noResults = document.getElementById('noResults');
-            container.innerHTML = '';
-
-            let filtered = products.filter(p => {
-                const matchesCategory = currentCategory === 'All' || p.category === currentCategory;
-                const matchesSearch = p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                                     p.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                                     p.category.toLowerCase().includes(searchTerm.toLowerCase());
-                return matchesCategory && matchesSearch;
-            });
-
-            if (filtered.length === 0) {
-                noResults.style.display = 'block';
-                container.style.display = 'none';
-            } else {
-                noResults.style.display = 'none';
-                container.style.display = 'grid';
-                filtered.forEach(product => {
-                    container.appendChild(createProductCard(product));
-                });
-            }
-        }
-
-        document.getElementById('searchInput').addEventListener('input', (e) => {
-            searchTerm = e.target.value;
-            displayProducts();
-        });
-
-        document.getElementById('products').addEventListener('click', (e) => {
-            if (e.target.classList.contains('buy-btn')) {
-                const productData = JSON.parse(decodeURIComponent(e.target.dataset.product));
-                buyProduct(productData);
-            }
-        });
-
-        createCategoryButtons();
-        createCarousel();
-        displayProducts();
-    </script>
+loadProducts();
+</script>
 </body>
 </html>
