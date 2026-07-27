@@ -290,6 +290,24 @@
             <button class="logout-btn" onclick="logout()">Logout</button>
         </div>
 
+        <div class="panel-card" style="margin-bottom: 1.5rem;">
+            <h2>📊 Site Visits</h2>
+            <div style="display: flex; gap: 2rem; flex-wrap: wrap; margin-top: 1rem;">
+                <div>
+                    <div style="font-size: 2rem; font-weight: 700; color: #6366f1;" id="statTotalViews">–</div>
+                    <div style="color: #6b7280; font-size: 0.85rem;">Total page views</div>
+                </div>
+                <div>
+                    <div style="font-size: 2rem; font-weight: 700; color: #6366f1;" id="statUniqueVisitors">–</div>
+                    <div style="color: #6b7280; font-size: 0.85rem;">Unique visitors</div>
+                </div>
+                <div>
+                    <div style="font-size: 2rem; font-weight: 700; color: #6366f1;" id="statTodayViews">–</div>
+                    <div style="color: #6b7280; font-size: 0.85rem;">Views today</div>
+                </div>
+            </div>
+        </div>
+
         <div class="admin-grid">
             <!-- Add/Edit Product Form -->
             <div class="panel-card">
@@ -373,6 +391,26 @@
             document.getElementById('loginScreen').style.display = 'none';
             document.getElementById('adminPanel').style.display = 'block';
             loadProducts();
+            loadStats();
+        }
+
+        async function loadStats() {
+            const { count: totalViews } = await supabaseClient
+                .from('page_views').select('*', { count: 'exact', head: true });
+
+            const todayStart = new Date();
+            todayStart.setHours(0, 0, 0, 0);
+            const { count: todayViews } = await supabaseClient
+                .from('page_views').select('*', { count: 'exact', head: true })
+                .gte('created_at', todayStart.toISOString());
+
+            const { data: visitorRows } = await supabaseClient
+                .from('page_views').select('visitor_id');
+            const uniqueVisitors = visitorRows ? new Set(visitorRows.map(r => r.visitor_id)).size : 0;
+
+            document.getElementById('statTotalViews').textContent = totalViews ?? 0;
+            document.getElementById('statUniqueVisitors').textContent = uniqueVisitors;
+            document.getElementById('statTodayViews').textContent = todayViews ?? 0;
         }
 
         async function logout() {
@@ -389,6 +427,7 @@
                 document.getElementById('loginScreen').style.display = 'none';
                 document.getElementById('adminPanel').style.display = 'block';
                 loadProducts();
+                loadStats();
             }
         })();
 
@@ -492,6 +531,8 @@
                 const successMsg = document.getElementById('successMessage');
                 successMsg.style.display = 'block';
                 setTimeout(() => { successMsg.style.display = 'none'; }, 3000);
+            } catch (err) {
+                alert('Upload failed: ' + (err.message || err));
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.textContent = '💾 Save Product';
