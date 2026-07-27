@@ -504,7 +504,21 @@ async function loadProducts() {
     displayProducts();
 }
 
+async function trackVisit() {
+    try {
+        let visitorId = localStorage.getItem('gn_visitor_id');
+        if (!visitorId) {
+            visitorId = crypto.randomUUID();
+            localStorage.setItem('gn_visitor_id', visitorId);
+        }
+        await supabaseClient.from('page_views').insert({ visitor_id: visitorId, page: window.location.pathname });
+    } catch (e) {
+        // tracking failures shouldn't break the storefront
+    }
+}
+
 loadProducts();
+trackVisit();
 </script>
 </body>
 </html>
